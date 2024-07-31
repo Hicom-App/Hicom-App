@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
           Container(
             width: Get.width,
             margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.13),
-            child: Text('Telefon raqamingizni kiriting'.tr, style: TextStyle(fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w500))
+            child: Text('Telefon raqamingizni kiriting'.tr, style: TextStyle(fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize, fontWeight: FontWeight.w500))
           ),
           Container(
               width: Get.width,
