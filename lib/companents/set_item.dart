@@ -24,8 +24,7 @@ class SettingsItem extends StatelessWidget {
         children: [
           icon,
           SizedBox(width: Get.width * 0.03),
-          Text(title, style: TextStyle(color: color, fontSize: Get.width * 0.04, fontWeight: FontWeight.w500)),
-          const Spacer(),
+          Expanded(child: Text(title, overflow: TextOverflow.ellipsis, maxLines: 1, style: TextStyle(color: color, fontSize: Get.width * 0.04, fontWeight: FontWeight.w500))),
           if (isLanguage)
             Text(GetController().language.toString() == 'uz_UZ' ? 'O‘zbekcha' : GetController().language.toString() == 'oz_OZ' ? 'Узбекча' : GetController().language.toString() == 'ru_RU' ? 'Русский' : 'English', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Get.width * 0.035, fontWeight: FontWeight.w500)),
           if (!isNightMode)
