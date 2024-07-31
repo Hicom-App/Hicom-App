@@ -17,30 +17,38 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     _getController.phoneController.clear();
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
           backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent,
           automaticallyImplyLeading: false,
           leading: IconButton(icon: Icon(Icons.arrow_back, size: Get.width * 0.07), onPressed: () => Get.back()),
           actions: [
             IconButton(icon: Icon(Icons.language, size: Get.width * 0.06), onPressed:() => InstrumentComponents().languageDialog(context)),
           ]
-      ),
+      ),*/
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            leading: IconButton(icon: Icon(Icons.arrow_back, size: Theme.of(context).buttonTheme.height), onPressed: () => Get.back()),
+            actions: [
+              IconButton(icon: Icon(Icons.language, size: Theme.of(context).buttonTheme.height), onPressed:() => InstrumentComponents().languageDialog(context)),
+            ]
+        ),
       body: Column(
         children: [
           SizedBox(height: Get.height * 0.03),
           Container(
             width: Get.width,
             margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.13),
-            child: Text('Telefon raqamingizni kiriting'.tr, style: TextStyle(fontSize: Get.width * 0.065, fontWeight: FontWeight.w500))
+            child: Text('Telefon raqamingizni kiriting'.tr, style: TextStyle(fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w500))
           ),
           Container(
               width: Get.width,
               margin: EdgeInsets.only(top: Get.height * 0.01, left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.03),
-              child: Text('Biz Tasdiqlash kodini jo‘natamiz'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontSize: Get.width * 0.045, fontWeight: FontWeight.w500))
+              child: Text('Biz Tasdiqlash kodini jo‘natamiz'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize, fontWeight: FontWeight.w500))
           ),
           Container(
               width: Get.width,
-              height: Get.height * 0.06,
+              //height: Get.height * 0.06,
               margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -55,24 +63,22 @@ class LoginPage extends StatelessWidget {
                 invalidNumberMessage: null,
                   decoration: InputDecoration(
                     hintText: 'Telefon raqam'.tr,
-                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Get.width * 0.04),
+                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Theme.of(context).textTheme.titleLarge!.fontSize),
                     border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(7)), borderSide: BorderSide.none),
                     counterText: '',
                     counter: null,
                     semanticCounterText: null,
                     error: null,
                     errorText: null,
-                    isDense: true,
+                    isDense: true
                   ),
-                  style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04),
+                  style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize),
                   showCountryFlag: true,
                   showCursor: true,
                   showDropdownIcon: false,
                   initialCountryCode: 'UZ',
-                  dropdownTextStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04),
-                  onCountryChanged: (phone) {
-                    _getController.code.value = '+${phone.fullCountryCode}';
-                  }
+                  dropdownTextStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize),
+                  onCountryChanged: (phone) => _getController.code.value = '+${phone.fullCountryCode}'
               )
           ),
           const Spacer(),
@@ -85,7 +91,7 @@ class LoginPage extends StatelessWidget {
                   onPressed: () => {
                     ApiController().sendCode(),
                   },
-                  child: Text('Tasdiqlash'.tr, style: TextStyle(color: AppColors.white, fontSize: Get.width * 0.045, fontWeight: FontWeight.w500))
+                  child: Text('Tasdiqlash'.tr, style: TextStyle(color: AppColors.white, fontSize: Theme.of(context).textTheme.titleMedium!.fontSize, fontWeight: FontWeight.w500))
               )
           ),
           SizedBox(height: Get.height * 0.05)
