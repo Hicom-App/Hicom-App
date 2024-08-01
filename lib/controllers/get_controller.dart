@@ -121,7 +121,6 @@ class GetController extends GetxController {
   }
 
   void changeDropDownItemsTitle(int index, String newValue) {
-
     if (index >= 0 && index < dropDownItemsTitle.length) {
       dropDownItemsTitle[index] = newValue;
     }

@@ -31,9 +31,8 @@ class SamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ApiController().login(_getController.getNumber(),_getController.getSession(),'50UvFayZ2w5u3O9B',false).then((_) => {
       _refreshController.requestRefresh(),
-      Future.delayed(const Duration(milliseconds: 2500), () {
-        _getData();
-      })
+      _getData()
+      //_getController.tapTimes(() {_getData();}, 2)
     });
     return PopScope(
         canPop: false,
