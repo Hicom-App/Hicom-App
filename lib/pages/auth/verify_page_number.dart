@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/controllers/api_controller.dart';
 import '../../companents/instrument/instrument_components.dart';
 import '../../controllers/get_controller.dart';
@@ -18,13 +20,9 @@ class VerifyPageNumber extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back, size: Theme.of(context).buttonTheme.height),
-              onPressed: () => Get.back()),
+          leading: IconButton(icon: Icon(Icons.arrow_back, size: Theme.of(context).iconTheme.fill), onPressed: () => Get.back()),
           actions: [
-            IconButton(icon: Icon(Icons.language, size: Theme.of(context).buttonTheme.height), onPressed: () {
-              InstrumentComponents().languageDialog(context);
-            })
+            IconButton(icon: Icon(Icons.language, size: Theme.of(context).iconTheme.fill), onPressed: () {InstrumentComponents().languageDialog(context);})
           ]
       ),
       body: Column(
@@ -33,12 +31,12 @@ class VerifyPageNumber extends StatelessWidget {
           Container(
             width: Get.width,
             margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.13),
-            child: Text('${'Kodni kiriting'.tr}:', style: TextStyle(fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize, fontWeight: FontWeight.w500))
+            child: TextLarge(text: '${'Kodni kiriting'.tr}:', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500)
           ),
           Container(
               width: Get.width,
               margin: EdgeInsets.only(top: Get.height * 0.01, left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.04),
-              child: Text('${'Faollashtirish kodi'.tr} $phoneNumber ${'raqamiga SMS tarzida yuborildi.'.tr}', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize, fontWeight: FontWeight.w500))
+              child: TextSmall(text: '${'Faollashtirish kodi'.tr} $phoneNumber ${'raqamiga SMS tarzida yuborildi.'.tr}', color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontWeight: FontWeight.w500)
           ),
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -198,16 +196,16 @@ class VerifyPageNumber extends StatelessWidget {
                 )
               ]
           ),
-          Padding(padding: EdgeInsets.only(left: Get.width * 0.05, right: Get.width * 0.03),
+          Padding(padding: EdgeInsets.only(left: Get.width * 0.05, right: Get.width * 0.03,top: Get.height * 0.02),
               child: Obx(() =>_getController.countdownDuration.value.inSeconds == 0
                   ? TextButton(
                   style: ButtonStyle(overlayColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () {ApiController().sendCode();_getController.resetTimer();},
-                  child: Text('Kodni qayta yuborish'.tr, style: Theme.of(context).textTheme.bodyMedium))
+                  child: TextSmall(text: 'Kodni qayta yuborish', color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontWeight: FontWeight.w500))
               :TextButton(
                   style: ButtonStyle(overlayColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () {},
-                  child: Text('${'Kodni qayta yuborish'.tr}: ${_getController.countdownDuration.value.inMinutes.toString().padLeft(2, '0')}:${(_getController.countdownDuration.value.inSeconds % 60).toString().padLeft(2, '0')}', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,)))
+                  child: TextSmall(text: '${'Kodni qayta yuborish'.tr}: ${_getController.countdownDuration.value.inMinutes.toString().padLeft(2, '0')}:${(_getController.countdownDuration.value.inSeconds % 60).toString().padLeft(2, '0')}', color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontWeight: FontWeight.w500))
               )
           )
         ]

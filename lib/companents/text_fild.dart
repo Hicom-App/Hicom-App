@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import '../pages/qr_scan_page.dart';
 
 class TextFields extends StatelessWidget {
@@ -18,7 +20,7 @@ class TextFields extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04)),
+          TextSmall(text: title, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
           SizedBox(height: Get.height * 0.01),
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
@@ -40,9 +42,9 @@ class TextFields extends StatelessWidget {
                   suffixIcon: isQrCode ? IconButton(onPressed: () => Get.to(QRViewExample()), icon: Icon(Icons.qr_code, color: Theme.of(context).colorScheme.onSurface)) : null,
                   contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: Get.width * 0.03),
                   hintText: 'Kiriting'.tr,
-                  hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Get.width * 0.04)
+                  hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize)
               ),
-                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04),
+                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
                 textAlignVertical: TextAlignVertical.center
             )
           )

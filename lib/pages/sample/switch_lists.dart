@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/pages/sample/switch_detail.dart';
 import 'package:hicom/resource/colors.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -48,8 +50,8 @@ class SwitchList extends StatelessWidget {
             appBar: AppBar(
                 backgroundColor: Colors.transparent,
                 surfaceTintColor: Colors.transparent,
-                title: Obx(() => Text(_getController.isSearch.value ? ''.tr : 'Qurilmalar ro‘yxati'.tr,style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w400))),
-                leading: Obx(() => IconButton(icon: Icon(_getController.isSearch.value ? Icons.arrow_back : Icons.arrow_back,  size: Get.height * 0.035), onPressed: () => {
+                title: Obx(() => TextLarge(text: _getController.isSearch.value ? ''.tr : 'Qurilmalar ro‘yxati'.tr, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400)),
+                leading: Obx(() => IconButton(icon: Icon(_getController.isSearch.value ? Icons.arrow_back : Icons.arrow_back,  size: Theme.of(context).iconTheme.fill), onPressed: () => {
                   if (_getController.isSearch.value){
                     _getController.isSearch.value = !_getController.isSearch.value,
                     _getController.searchController.clear()
@@ -60,7 +62,7 @@ class SwitchList extends StatelessWidget {
                 actions: [
                   Obx(() => _getController.isSearch.value
                       ? SearchFields(onChanged: (String value) {_getController.searchSwitch(value);})
-                      : IconButton(icon: Icon(Icons.search, size: Get.height * 0.035), onPressed: () => {_getController.isSearch.value = !_getController.isSearch.value}))
+                      : IconButton(icon: Icon(Icons.search, size: Theme.of(context).iconTheme.fill), onPressed: () => {_getController.isSearch.value = !_getController.isSearch.value}))
                 ]),
             body: SmartRefresher(
                 enablePullDown: true,
@@ -95,11 +97,11 @@ class SwitchList extends StatelessWidget {
                                                 children: [
                                                   Row(
                                                       children: [
-                                                        Text(_getController.switchListModel.value.offline![index].name.toString()),
+                                                        TextSmall(text: _getController.switchListModel.value.offline![index].name.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
                                                         const Spacer(),
                                                         Icon(TablerIcons.circle_filled, color: Theme.of(context).colorScheme.error, size: Get.width * 0.025),
                                                         PopupMenuButton<String>(
-                                                            icon: Icon(TablerIcons.dots, size: Get.width * 0.05),
+                                                            icon: Icon(TablerIcons.dots, size: Theme.of(context).buttonTheme.height),
                                                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                                                             color: Theme.of(context).colorScheme.surface,
                                                             surfaceTintColor: Colors.transparent,
@@ -134,7 +136,7 @@ class SwitchList extends StatelessWidget {
                                                                       children: [
                                                                         Icon(Icons.edit, size: Get.width * 0.04),
                                                                         SizedBox(width: Get.width * 0.015),
-                                                                        Text('Tahrirlash'.tr)
+                                                                        TextSmall(text: 'Tahrirlash', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400)
                                                                       ],
                                                                     )
                                                                 ),
@@ -151,7 +153,7 @@ class SwitchList extends StatelessWidget {
                                                                       children: [
                                                                         Icon(Icons.delete, size: Get.width * 0.04, color: Theme.of(context).colorScheme.error),
                                                                         SizedBox(width: Get.width * 0.015),
-                                                                        Text('O‘chirish'.tr, style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: Get.width * 0.04))
+                                                                        TextSmall(text: 'O‘chirish', color: Theme.of(context).colorScheme.error, fontWeight: FontWeight.w400)
                                                                       ],
                                                                     )
                                                                 )
@@ -174,9 +176,9 @@ class SwitchList extends StatelessWidget {
                                                     ),
                                                   Row(
                                                     children: [
-                                                      Text('${'MAC'.tr} ${_getController.switchListModel.value.offline![index].mac}',style: TextStyle(fontSize: Get.textTheme.bodySmall!.fontSize)),
+                                                      TextSmall(text: '${'MAC'.tr} ${_getController.switchListModel.value.offline![index].mac}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,fontSize: Get.textTheme.bodySmall!.fontSize),
                                                       const Spacer(),
-                                                      Text(_getController.maskString(_getController.switchListModel.value.offline![index].sn.toString()),style: TextStyle(fontSize: Get.textTheme.bodySmall!.fontSize)),
+                                                      TextSmall(text: _getController.maskString(_getController.switchListModel.value.offline![index].sn.toString()), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,fontSize: Get.textTheme.bodySmall!.fontSize)
                                                     ],
                                                   )
                                                 ],
@@ -204,11 +206,11 @@ class SwitchList extends StatelessWidget {
                                                   children: [
                                                     Row(
                                                         children: [
-                                                          Text(_getController.switchListModel.value.online![index].name.toString(), style: TextStyle(fontSize:Get.textTheme.bodyMedium!.fontSize)),
+                                                          TextSmall(text: _getController.switchListModel.value.online![index].name.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
                                                           const Spacer(),
                                                           Icon(TablerIcons.circle_filled, color: AppColors.green, size: Get.width * 0.025),
                                                           PopupMenuButton<String>(
-                                                              icon: Icon(TablerIcons.dots, size: Get.width * 0.05),
+                                                              icon: Icon(TablerIcons.dots, size: Theme.of(context).buttonTheme.height),
                                                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                                                               color: Theme.of(context).colorScheme.surface,
                                                               surfaceTintColor: Colors.transparent,
@@ -244,7 +246,7 @@ class SwitchList extends StatelessWidget {
                                                                         children: [
                                                                           Icon(Icons.edit, size: Get.width * 0.04),
                                                                           SizedBox(width: Get.width * 0.015),
-                                                                          Text('Tahrirlash'.tr)
+                                                                          TextSmall(text: 'Tahrirlash', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400)
                                                                         ],
                                                                       )
                                                                   ),
@@ -261,7 +263,7 @@ class SwitchList extends StatelessWidget {
                                                                         children: [
                                                                           Icon(Icons.delete, size: Get.width * 0.04, color: Theme.of(context).colorScheme.error),
                                                                           SizedBox(width: Get.width * 0.015),
-                                                                          Text('O‘chirish'.tr, style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: Get.width * 0.04))
+                                                                          TextSmall(text: 'O‘chirish', color: Theme.of(context).colorScheme.error, fontWeight: FontWeight.w400)
                                                                         ],
                                                                       )
                                                                   )
@@ -284,9 +286,9 @@ class SwitchList extends StatelessWidget {
                                                       ),
                                                     Row(
                                                         children: [
-                                                          Text('${'MAC'.tr} ${_getController.switchListModel.value.online![index].mac}',style: TextStyle(fontSize: Get.textTheme.bodySmall!.fontSize)),
+                                                          TextSmall(text: '${'MAC'.tr} ${_getController.switchListModel.value.online![index].mac}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,fontSize: Get.textTheme.bodySmall!.fontSize),
                                                           const Spacer(),
-                                                          Text(_getController.maskString(_getController.switchListModel.value.online![index].sn.toString()),style: TextStyle(fontSize: Get.textTheme.bodySmall!.fontSize))
+                                                          TextSmall(text: _getController.maskString(_getController.switchListModel.value.online![index].sn.toString()), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,fontSize: Get.textTheme.bodySmall!.fontSize)
                                                         ]
                                                     )
                                                   ]
@@ -302,7 +304,7 @@ class SwitchList extends StatelessWidget {
                       SizedBox(
                           height: Get.height* 0.9,
                           width: Get.width,
-                          child: Center(child: Text('Ma’lumotlar topilmadi'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.05)))
+                          child: Center(child: TextLarge(text: 'Ma’lumotlar topilmadi'.tr, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400))
                       )
                     ]))
                 )
@@ -315,7 +317,7 @@ class SwitchList extends StatelessWidget {
                 _getController.nameProjectController.text = name;
                 Get.to(AddSwitchPage(), arguments: Get.arguments);
               },
-              child: Icon(Icons.add,color: AppColors.white,size: Get.width * 0.06),
+              child: Icon(Icons.add,color: AppColors.white,size: Theme.of(context).buttonTheme.height),
             )
 
         )

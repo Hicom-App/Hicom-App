@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/companents/instrument/instrument_components.dart';
 import 'package:hicom/companents/set_item.dart';
 import 'package:hicom/controllers/api_controller.dart';
@@ -10,8 +12,6 @@ import 'package:hicom/resource/colors.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../controllers/get_controller.dart';
 import 'package:share_link/share_link.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import 'edit_user.dart';
 import 'instruction_page.dart';
 
@@ -19,52 +19,6 @@ class UserPage extends StatelessWidget {
   UserPage({super.key});
 
   final GetController _getController = Get.put(GetController());
-
-  void showRateDialog(BuildContext context) {
-    Get.defaultDialog(
-      title: 'Dasturni baholash'.tr,
-      titleStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04),
-      backgroundColor: Theme.of(context).colorScheme.surface,
-        confirm: ElevatedButton(
-            onPressed: () => Get.back(),
-            style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                backgroundColor: AppColors.primaryColor,
-                minimumSize: Size(Get.width * 0.4, Get.height * 0.05),
-            ),
-            child: Text('Bekor qilish'.tr, style: TextStyle(color: AppColors.white, fontSize: Get.width * 0.04))
-        ),
-
-        content: Column(
-        children: [
-          RatingBar.builder(
-            initialRating: 3,
-            minRating: 0,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
-            onRatingUpdate: (rating) => {
-              Get.back(),
-              Get.showSnackbar(
-                GetSnackBar(
-                  title: 'Dasturni baholash'.tr,
-                  message: 'Yuborildi'.tr,
-                  backgroundColor: AppColors.black70.withOpacity(0.7),
-                  duration: const Duration(seconds: 2),
-                  margin: const EdgeInsets.all(10.0),
-                  borderRadius: 10.0
-                )
-              )
-            }
-          ),
-          SizedBox(height: Get.height * 0.01),
-        ]
-      )
-    );
-  }
-
   final _refreshController = RefreshController(initialRefresh: false);
 
   void _onLoading() => _refreshController.loadComplete();
@@ -75,7 +29,7 @@ class UserPage extends StatelessWidget {
     _getController.getUser();
     _getController.nameController.text = _getController.loginModel.value.user?.name ?? '';
     return Scaffold(
-        appBar: AppBar(backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent, leading: IconButton(icon: Icon(Icons.arrow_back, size: Get.width * 0.07), onPressed: () => Get.back()), centerTitle: true, title: Text('Mening hisobim'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w400))),
+        appBar: AppBar(backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent, leading: IconButton(icon: Icon(Icons.arrow_back, size: Theme.of(context).iconTheme.fill), onPressed: () => Get.back()), centerTitle: true, title: TextLarge(text: 'Mening hisobim'.tr, color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400)),
         body: SmartRefresher(
             enablePullDown: true,
             enablePullUp: true,
@@ -95,6 +49,8 @@ class UserPage extends StatelessWidget {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         elevation: 5,
                         color: Theme.of(context).colorScheme.surface,
+                        shadowColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                        surfaceTintColor: Colors.transparent,
                         child: Padding(
                           padding: EdgeInsets.all(Get.height * 0.02),
                           child: Column(
@@ -106,11 +62,11 @@ class UserPage extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           if (_getController.loginModel.value.user != null)
-                                            Text(_getController.loginModel.value.user!.name.toString(), style: TextStyle(fontSize: Get.height * 0.025, fontWeight: FontWeight.w500)),
+                                            TextLarge(text: _getController.loginModel.value.user!.name.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
                                           SizedBox(height: Get.height * 0.01),
                                           if (_getController.loginModel.value.user != null)
-                                            Text(_getController.loginModel.value.user!.phone.toString(), style: TextStyle(fontSize: Get.height * 0.025, fontWeight: FontWeight.w500)),
-                                        ],
+                                            TextLarge(text: _getController.loginModel.value.user!.phone.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500)
+                                        ]
                                       ),
                                       const Spacer(),
                                       SvgPicture.asset('assets/svg_assets/user.svg', width: Get.height * 0.08, height: Get.height * 0.08)
@@ -119,11 +75,8 @@ class UserPage extends StatelessWidget {
                                 SizedBox(height: Get.height * 0.01),
                                 ElevatedButton(
                                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.blue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                                    onPressed: () {
-                                      _getController.changeDropDownItemsType();
-                                      Get.to(() => EditUser(), transition: Transition.fadeIn);
-                                    },
-                                    child: Text('Tahrirlash'.tr, style: TextStyle(fontSize: Get.height * 0.02, fontWeight: FontWeight.w500, color: AppColors.white))),
+                                    onPressed: () {_getController.changeDropDownItemsType();Get.to(() => EditUser(), transition: Transition.fadeIn);},
+                                    child: TextSmall(text: 'Tahrirlash'.tr, color: AppColors.white, fontWeight: FontWeight.w500)),
                                 SizedBox(height: Get.height * 0.01),
                                 const Divider(),
                                 SizedBox(height: Get.height * 0.01),
@@ -131,17 +84,13 @@ class UserPage extends StatelessWidget {
                                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                                   child: Row(
                                       children: [
-                                        Icon(TablerIcons.logout, color: AppColors.red, size: Get.height * 0.035),
+                                        Icon(TablerIcons.logout, color: AppColors.red, size: Theme.of(context).buttonTheme.height),
                                         SizedBox(width: Get.height * 0.01),
-                                        Text('Hisobdan chiqish'.tr, style: TextStyle(fontSize: Get.width * 0.045, fontWeight: FontWeight.w500, color: AppColors.red))
+                                        TextSmall(text: 'Hisobdan chiqish'.tr, color: AppColors.red, fontWeight: FontWeight.w500)
                                       ]
                                   ),
-                                  onTap: (){
-                                    InstrumentComponents().logOutDialog(context);
-                                  },
-                                  onLongPress: (){
-                                    ApiController().deleteUser();
-                                  },
+                                  onTap: (){InstrumentComponents().logOutDialog(context);},
+                                  onLongPress: (){ApiController().deleteUser();},
                                 )
                               ])
                         )
@@ -152,72 +101,61 @@ class UserPage extends StatelessWidget {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           elevation: 5,
                           color: Theme.of(context).colorScheme.surface,
+                          shadowColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                          surfaceTintColor: Colors.transparent,
                           child: Padding(
                             padding: EdgeInsets.all(Get.height * 0.02),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SettingsItem(
-                                      icon: Icon(Theme.of(context).brightness != Brightness.dark ? TablerIcons.sun : TablerIcons.moon, color: Theme.of(context).colorScheme.onSurface, size: Get.height * 0.04),
+                                      icon: Icon(Theme.of(context).brightness != Brightness.dark ? TablerIcons.sun : TablerIcons.moon, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height),
                                       title: 'Dastur mavzusi'.tr,
-                                      onTap: () {
-                                        _getController.setRequest();
-                                      },
+                                      onTap: () {_getController.setRequest();},
                                       color: Theme.of(context).colorScheme.onSurface,
                                       isNightMode: true,
                                       isLanguage: false
                                   ),
                                   const Divider(),
                                   SettingsItem(
-                                      icon: Icon(TablerIcons.world, color: Theme.of(context).colorScheme.onSurface, size: Get.height * 0.04),
+                                      icon: Icon(TablerIcons.world, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height),
                                       title: 'Dastur tili'.tr,
-                                      onTap: () {
-                                        InstrumentComponents().languageDialog(context);
-                                      },
+                                      onTap: () {InstrumentComponents().languageDialog(context);},
                                       color: Theme.of(context).colorScheme.onSurface, isNightMode: false,
                                       isLanguage: true
                                   ),
                                   const Divider(),
                                   SettingsItem(
-                                      icon: Icon(TablerIcons.info_circle, color: Theme.of(context).colorScheme.onSurface, size: Get.height * 0.04),
+                                      icon: Icon(TablerIcons.info_circle, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height),
                                       title: 'Foydalanish yo‘riqnomasi'.tr,
-                                      onTap: () {
-                                        Get.to(() => InstructionPage(), transition: Transition.fadeIn);
-                                      },
+                                      onTap: () {Get.to(() => InstructionPage(), transition: Transition.fadeIn);},
                                       color: Theme.of(context).colorScheme.onSurface,
                                       isNightMode: false,
                                       isLanguage: false
                                   ),
                                   const Divider(),
                                   SettingsItem(
-                                      icon: Icon(TablerIcons.headphones, color: Theme.of(context).colorScheme.onSurface, size: Get.height * 0.04),
+                                      icon: Icon(TablerIcons.headphones, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height),
                                       title: 'Qo‘llab quvvatlash'.tr,
-                                      onTap: () {
-                                        ApiController().getSettings();
-                                        Get.to(() => SupportPage(), transition: Transition.fadeIn);
-                                      },
+                                      onTap: () {ApiController().getSettings();Get.to(() => SupportPage(), transition: Transition.fadeIn);},
                                       color: Theme.of(context).colorScheme.onSurface,
                                       isNightMode: false,
                                       isLanguage: false
                                   ),
                                   const Divider(),
                                   SettingsItem(
-                                      icon: Icon(TablerIcons.star, color: Theme.of(context).colorScheme.onSurface, size: Get.height * 0.04),
+                                      icon: Icon(TablerIcons.star, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height),
                                       title: 'Dasturni baholash'.tr,
-                                      onTap: () {
-                                        showRateDialog(context);
-                                      },
+                                      onTap: () {InstrumentComponents().showRateDialog(context);},
                                       color: Theme.of(context).colorScheme.onSurface,
                                       isNightMode: false,
                                       isLanguage: false
                                   ),
                                   const Divider(),
                                   SettingsItem(
-                                      icon: Icon(TablerIcons.share, color: Theme.of(context).colorScheme.onSurface, size: Get.height * 0.04),
+                                      icon: Icon(TablerIcons.share, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height),
                                       title: 'Dasturni ulashish'.tr,
-                                      onTap: () {
-                                        ShareLink.shareUri(Uri.parse('http://play.google.com/store/apps/details?id=com.uz.hicom'), subject: 'Hicom.uz');
-                                      },
+                                      onTap: () {ShareLink.shareUri(Uri.parse('http://play.google.com/store/apps/details?id=com.uz.hicom'), subject: 'Hicom.uz');},
                                       color: Theme.of(context).colorScheme.onSurface,
                                       isNightMode: false,
                                       isLanguage: false
@@ -227,7 +165,7 @@ class UserPage extends StatelessWidget {
                           )
                       ),
                       SizedBox(height: Get.height * 0.02),
-                      Text('©Hicom 2024', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04))
+                      TextSmall(text: '©Hicom 2024', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400)
                     ]
                 ))
             )

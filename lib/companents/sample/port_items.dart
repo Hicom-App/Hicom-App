@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/controllers/get_controller.dart';
 
 class PortItems extends StatelessWidget {
@@ -15,11 +16,7 @@ class PortItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), width: Get.height * 0.003),
-            color: Theme.of(context).colorScheme.surface
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), width: Get.height * 0.003), color: Theme.of(context).colorScheme.surface),
         margin: EdgeInsets.only(bottom: Get.height * 0.01),
         padding: EdgeInsets.all(Get.height * 0.01),
         child:  data.isEmpty
@@ -35,7 +32,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -50,7 +47,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -65,7 +62,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -80,7 +77,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -95,7 +92,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -110,7 +107,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -125,7 +122,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -140,7 +137,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -155,7 +152,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -170,7 +167,7 @@ class PortItems extends StatelessWidget {
                                   width: Get.width * 0.022,
                                   height: Get.height * 0.022,
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -192,7 +189,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[0] == 0 ? Colors.orange : ports?[0] == 1 ? Colors.green : ports?[0] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[0].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[0], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -210,7 +207,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[1].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[1], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -228,7 +225,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[2] == 0 ? Colors.orange : ports?[2] == 1 ? Colors.green : ports?[2] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[2].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[2], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -246,7 +243,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[3] == 0 ? Colors.orange : ports?[3] == 1 ? Colors.green : ports?[3] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[3].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[3], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -264,7 +261,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[4] == 0 ? Colors.orange : ports?[4] == 1 ? Colors.green : ports?[4] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[4].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[4], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -282,7 +279,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[5] == 0 ? Colors.orange : ports?[5] == 1 ? Colors.green : ports?[5] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[5].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[5], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -300,7 +297,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[6] == 0 ? Colors.orange : ports?[6] == 1 ? Colors.green : ports?[6] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[6].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[6], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -317,7 +314,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[7] == 0 ? Colors.orange : ports?[7] == 1 ? Colors.green : ports?[7] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[7].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[7], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -334,7 +331,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[8] == 0 ? Colors.orange : ports?[8] == 1 ? Colors.green : ports?[8] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[8].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[8], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -351,7 +348,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[9] == 0 ? Colors.orange : ports?[9] == 1 ? Colors.green : ports?[9] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[9].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[9], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -369,7 +366,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[10] == 0 ? Colors.orange : ports?[10] == 1 ? Colors.green : ports?[10] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[10].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[10], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )
@@ -387,7 +384,7 @@ class PortItems extends StatelessWidget {
                                   colorFilter: ColorFilter.mode(ports?[11] == 0 ? Colors.orange : ports?[11] == 1 ? Colors.green : ports?[11] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn))
                             else
                               SizedBox(width: Get.width * 0.03, height: Get.height * 0.022),
-                            Text(data[11].tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                            TextSmall(text: data[11], color: Theme.of(context).colorScheme.onSurface)
                           ]
                       )
                   )

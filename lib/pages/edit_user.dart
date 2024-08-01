@@ -1,7 +1,8 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/companents/instrument/instrument_components.dart';
 import 'package:hicom/controllers/tea.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -30,9 +31,9 @@ class EditUser extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent,
-          title: Text('Hisobni taxrirlash'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w400)),
+          title: TextLarge(text: 'Hisobni taxrirlash', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
           centerTitle: true,
-          leading: IconButton(icon: Icon(Icons.arrow_back, size: Get.width * 0.07), onPressed: () => Get.back())
+          leading: IconButton(icon: Icon(Icons.arrow_back, size: Theme.of(context).iconTheme.fill), onPressed: () => Get.back())
       ),
       body: SmartRefresher(
           enablePullDown: true,
@@ -50,7 +51,7 @@ class EditUser extends StatelessWidget {
                     SizedBox(height: Get.height * 0.05),
                     TextFields(title: '${'Ism-familiyangizni kiriting'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.nameController, maxLengthCharacters: 40),
                     SizedBox(height: Get.height * 0.02),
-                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:Text('${'Mamlakat'.tr}:', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04)),),
+                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:TextSmall(text: 'Mamlakat', color: Theme.of(context).colorScheme.onSurface)),
                     Container(
                       margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03, bottom: Get.height * 0.02, top: Get.height * 0.01),
                       child: DropdownItem(
@@ -69,17 +70,17 @@ class EditUser extends StatelessWidget {
                                     bottomSheetHeight: Get.height * 0.7,
                                     borderRadius: BorderRadius.circular(10),
                                     bottomSheetWidth: Get.width,
-                                    flagSize: Get.width * 0.06,
+                                    flagSize: Theme.of(context).buttonTheme.height,
                                     inputDecoration: InputDecoration(
                                         fillColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
                                         filled: true,
                                         disabledBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(10)),
                                         focusColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
-                                        hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Get.width * 0.04),
+                                        hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize),
                                         contentPadding: EdgeInsets.symmetric(horizontal: Get.width * 0.03),
                                         border: InputBorder.none,
                                         labelText: 'Mamlakatlarni qidirish'.tr,
-                                        labelStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04),
+                                        labelStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
                                         enabledBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(10)),
                                         focusedBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(10))
                                     )
@@ -95,7 +96,7 @@ class EditUser extends StatelessWidget {
                           }),
                     ),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.provinceModel.value.regions != null && _getController.provinceModel.value.regions!.isNotEmpty)
-                      Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:Text('${'Viloyat'.tr}:', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04))),
+                      Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:TextSmall(text: 'Viloyat', color: Theme.of(context).colorScheme.onSurface)),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.provinceModel.value.regions != null && _getController.provinceModel.value.regions!.isNotEmpty)
                       Container(
                           margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.02,top: Get.height * 0.01),
@@ -107,27 +108,23 @@ class EditUser extends StatelessWidget {
                               })
                       ),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.districtsModel.value.districts != null && _getController.provinceModel.value.regions!.isNotEmpty)
-                      Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:Text('${'Shaxar/Tuman'.tr}:', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04))),
+                      Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:TextSmall(text: 'Shaxar/Tuman', color: Theme.of(context).colorScheme.onSurface)),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.districtsModel.value.districts != null && _getController.provinceModel.value.regions!.isNotEmpty)
                       Container(
                           margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.02,top: Get.height * 0.01),
-                          child: DropdownItem(
-                              title: _getController.districtsModel.value.districts![_getController.dropDownItems[1]].name.toString(),
-                              onTap: () => {
-                                InstrumentComponents().bottomBuildLanguageDialog(context,'Shaxar/Tuman'.tr,1)
-                              })
+                          child: DropdownItem(title: _getController.districtsModel.value.districts![_getController.dropDownItems[1]].name.toString(), onTap: () => {InstrumentComponents().bottomBuildLanguageDialog(context,'Shaxar/Tuman'.tr,1)})
                       ),
-                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:Text('${'Foydalanuvchi turi'.tr}:', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04))),
+                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:TextSmall(text: 'Foydalanuvchi turi', color: Theme.of(context).colorScheme.onSurface)),
                     Container(
                       margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.02,top: Get.height * 0.02),
                       child: DropdownItem(
                           title: _getController.dropDownItem[_getController.dropDownItems[2]].toString(),
-                          onTap: () => {
-                            InstrumentComponents().bottomBuildLanguageDialog(context,'Foydalanuvchi turi'.tr,2)
-                          }),
+                          onTap: () => {InstrumentComponents().bottomBuildLanguageDialog(context,'Foydalanuvchi turi'.tr,2)}),
                     ),
                     SizedBox(height: Get.height * 0.05),
-                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
+                    Container(
+                        width: Get.width,
+                        padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
                         child: ElevatedButton(
                             onPressed: () => {
                               if (_getController.nameController.text.isEmpty) {
@@ -141,15 +138,13 @@ class EditUser extends StatelessWidget {
                               }
                             },
                             style: ElevatedButton.styleFrom(backgroundColor: AppColors.blue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            child: SizedBox(
-                                width: Get.width,
-                                height: 50.h,
-                                child: Center(child: Text('Saqlash'.tr, style: TextStyle(color: AppColors.white, fontSize: Get.width * 0.04))))
+                            child: const TextSmall(text: 'Saqlash', color: AppColors.white, fontWeight: FontWeight.w500)
                         )
                     ),
                     SizedBox(height: Get.height * 0.01)
                   ]
-              )))
+              ))
+          )
       )
     );
   }

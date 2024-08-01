@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/controllers/api_controller.dart';
 import 'package:hicom/resource/colors.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -49,9 +50,9 @@ class SwitchDetailPage extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent,
-            title: Text('Qurilma haqida'.tr,style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w400)),
+            title: TextLarge(text: 'Qurilma haqida',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w400),
             centerTitle: true,
-            leading: IconButton(icon: Icon(Icons.arrow_back, size:Get.height * 0.035), onPressed: () => {Get.back()}),
+            leading: IconButton(icon: Icon(Icons.arrow_back, size: Theme.of(context).iconTheme.fill), onPressed: () => {Get.back()}),
           ),
           body: SmartRefresher(
               enablePullDown: true,
@@ -65,7 +66,7 @@ class SwitchDetailPage extends StatelessWidget {
               child: Obx(() => _getController.searchProjectModel.value.admin != null || _getController.searchProjectModel.value.join != null
                   ? Column(
                   children: [
-                    Center(child: Text(title!, style: TextStyle(fontSize: Get.textTheme.headlineSmall!.fontSize, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface))),
+                    Center(child: TextLarge(text: title!,color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w400)),
                     SizedBox(height: Get.height * 0.02),
                     if (_getController.switchDetailModel.value.detail != null)
                       Padding(
@@ -82,22 +83,9 @@ class SwitchDetailPage extends StatelessWidget {
                           padding: EdgeInsets.all(Get.height * 0.01),
                           margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
                           decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1), borderRadius: BorderRadius.circular(11)),
-                          child: const Center(child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(AppColors.blue),
-                          ))
+                          child: const Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(AppColors.blue)))
                       ),
-                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03, top: Get.height * 0.01), child: InkWell(
-                            onTap: () {
-                              InstrumentComponents().infoPortDialog(context);
-                            },
-                            child: Row(
-                                children: [
-                                  Icon(TablerIcons.info_circle, color: AppColors.blue, size: Get.textTheme.headlineSmall!.fontSize),
-                                  SizedBox(width: Get.width * 0.01),
-                                  Text('Portlar holati haqida'.tr, style: TextStyle(color: AppColors.blue, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500))
-                                ]
-                            )
-                        )),
+                    Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03, top: Get.height * 0.01), child: InkWell(onTap: () {InstrumentComponents().infoPortDialog(context);}, child: Row(children: [Icon(TablerIcons.info_circle, color: AppColors.blue, size: Get.textTheme.headlineSmall!.fontSize), SizedBox(width: Get.width * 0.01), const TextSmall(text: 'Portlar holati haqida',color: AppColors.blue,fontWeight: FontWeight.w500)]))),
                     Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,top: Get.height * 0.03, bottom: Get.height * 0.02),
                         child: Column(
@@ -115,9 +103,9 @@ class SwitchDetailPage extends StatelessWidget {
                                     unselectedLabelColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                                     indicator: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(11), boxShadow: [BoxShadow(color: Theme.of(context).colorScheme.surface.withOpacity(0.1), spreadRadius: 2, blurRadius: 2, offset: const Offset(0, 2))]),
                                     tabs: [
-                                      Tab(child: SizedBox(width: Get.width * 0.6, child: Center(child: Text('ma’lumotlar'.tr,maxLines: 1,overflow: TextOverflow.ellipsis)))),
-                                      Tab(child: SizedBox(width: Get.width * 0.6, child: Center(child: Text('Portlar'.tr,maxLines: 1,overflow: TextOverflow.ellipsis)))),
-                                      Tab(child: SizedBox(width: Get.width * 0.6, child: Center(child: Text('Sozlamalar'.tr,maxLines: 1,overflow: TextOverflow.ellipsis))))
+                                      Tab(child: SizedBox(width: Get.width * 0.6, child: Center(child: TextSmall(text: 'ma’lumotlar',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize)))),
+                                      Tab(child: SizedBox(width: Get.width * 0.6, child: Center(child: TextSmall(text: 'Portlar',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize)))),
+                                      Tab(child: SizedBox(width: Get.width * 0.6, child: Center(child: TextSmall(text: 'Sozlamalar',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))))
                                     ]
                                 )
                             )
@@ -149,24 +137,14 @@ class SwitchDetailPage extends StatelessWidget {
                                         SizedBox(height: Get.height * 0.015),
                                         ItemData(title: 'Online davri'.tr, subtitle: _getController.switchDetailModel.value.detail!.uptime.toString()),
                                         SizedBox(height: Get.height * 0.05),
-                                        SizedBox(
-                                            width: Get.width,
-                                            height: 50.h,
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(backgroundColor: AppColors.blue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                                              onPressed: () {
-                                                InstrumentComponents().restartDialog(context, pidId.toString(), sn.toString());
-                                              },
-                                              child: Text('Qurilmani o‘chirib yoqish'.tr, style: TextStyle(color: AppColors.white, fontSize: Get.textTheme.bodyMedium!.fontSize)),
-                                            )
-                                        )
+                                        SizedBox(width: Get.width, child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: AppColors.blue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))), onPressed: () {InstrumentComponents().restartDialog(context, pidId.toString(), sn.toString());}, child: TextSmall(text: 'Qurilmani o‘chirib yoqish',color: AppColors.white,fontSize: Get.textTheme.bodyMedium!.fontSize)))
                                       ]
                                   )
                               )
                             else
                               SizedBox(
                                 width: Get.width,
-                                child: Center(child: Text('Ma’lumotlar topilmadi'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                child: Center(child: TextLarge(text: 'Ma’lumotlar topilmadi',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500)),
                               ),
                             if (_getController.switchDetailModel.value.detail != null)
                               Padding(
@@ -175,11 +153,11 @@ class SwitchDetailPage extends StatelessWidget {
                                       children: [
                                         Row(
                                             children: [
-                                              Expanded(child: Center(child: Text('Port'.tr, maxLines: 1,overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
-                                              Expanded(child: Center(child: Text('Power'.tr, maxLines: 1,overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
-                                              Expanded(child: Center(child: Text('TX'.tr, maxLines: 1,overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
-                                              Expanded(child: Center(child: Text('RX'.tr, maxLines: 1,overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
-                                              Expanded(child: Center(child: Text('Status'.tr, maxLines: 1,overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
+                                              Expanded(child: Center(child: TextSmall(text: 'Port',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                              Expanded(child: Center(child: TextSmall(text: 'Power',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                              Expanded(child: Center(child: TextSmall(text: 'TX',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                              Expanded(child: Center(child: TextSmall(text: 'RX',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                              Expanded(child: Center(child: TextSmall(text: 'Status',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
                                             ]
                                         ),
                                         Divider(thickness: 1, color: Theme.of(context).colorScheme.outline),
@@ -201,7 +179,7 @@ class SwitchDetailPage extends StatelessWidget {
                                   )
                               )
                             else
-                              SizedBox(width: Get.width, child: Center(child: Text('Ma’lumotlar topilmadi'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize))),),
+                              SizedBox(width: Get.width, child: Center(child: TextLarge(text: 'Ma’lumotlar topilmadi',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500))),
                             if (_getController.switchDetailModel.value.detail != null)
                               Padding(
                                   padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,top: Get.height * 0.03, bottom: Get.height * 0.02),
@@ -209,10 +187,10 @@ class SwitchDetailPage extends StatelessWidget {
                                       children: [
                                         Row(
                                             children: [
-                                              Expanded(child: Center(child: Text('Port'.tr, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
-                                              Expanded(child: Center(child: Text('POE'.tr, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500)))),
-                                              Expanded(child:Center(child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Text('Extend'.tr, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500))))),
-                                              Expanded(child: Center(child:SingleChildScrollView(scrollDirection: Axis.horizontal, child: Text('Reboot'.tr, maxLines: 1, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize, fontWeight: FontWeight.w500))))),
+                                              Expanded(child: Center(child: TextSmall(text: 'Port',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                              Expanded(child: Center(child: TextSmall(text: 'POE',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))),
+                                              Expanded(child: Center(child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: TextSmall(text: 'Extend',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize)))),
+                                              Expanded(child: Center(child:SingleChildScrollView(scrollDirection: Axis.horizontal, child: TextSmall(text: 'Reboot',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500,fontSize: Get.textTheme.bodyMedium!.fontSize))))
                                             ]
                                         ),
                                         Divider(thickness: 1, color: Theme.of(context).colorScheme.outline),
@@ -241,8 +219,8 @@ class SwitchDetailPage extends StatelessWidget {
                                   )
                               )
                             else
-                              SizedBox(width: Get.width, child: Center(child: Text('Ma’lumotlar topilmadi'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.textTheme.bodyMedium!.fontSize))),),
-                          ],
+                              SizedBox(width: Get.width, child: Center(child: TextLarge(text: 'Ma’lumotlar topilmadi',color: Theme.of(context).colorScheme.onSurface,fontWeight: FontWeight.w500)))
+                          ]
                         )
                     )
                   ]

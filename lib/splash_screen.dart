@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hicom/pages/auth/login_page.dart';
 import 'package:hicom/pages/sample/sample_page.dart';
 import '../controllers/get_controller.dart';
+import 'companents/filds/text_large.dart';
 
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
@@ -32,7 +33,7 @@ class SplashScreen extends StatelessWidget {
             Flexible(child: Container()),
             CircularProgressIndicator(color: Theme.of(context).colorScheme.primary),
             SizedBox(height: Get.height * 0.04),
-            Text('${'Talqin'.tr}: 1.0.0', style: TextStyle(fontSize: Get.width * 0.035, fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.onSurface)),
+            TextLarge(text: '${'Talqin'.tr}: 1.0.0', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
             SizedBox(height: Get.height * 0.02),
           ]
         )

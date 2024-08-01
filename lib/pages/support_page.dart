@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_large.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/resource/colors.dart';
 import '../companents/set_support_item.dart';
 import '../controllers/get_controller.dart';
@@ -16,9 +18,9 @@ class SupportPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,surfaceTintColor: Colors.transparent,
-        title: Text('Qo‘llab quvvatlash'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w400)),
+        title: TextLarge(text: 'Qo‘llab quvvatlash'.tr, color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.titleLarge!.fontSize, fontWeight: FontWeight.w400),
         centerTitle: true,
-        leading: IconButton(icon: const Icon(Icons.arrow_back), onPressed: () => Get.back())),
+        leading: IconButton(icon: Icon(Icons.arrow_back,size: Theme.of(context).iconTheme.fill), onPressed: () => Get.back())),
       body: Obx(() => Column(
         children: [
           SizedBox(height: Get.height * 0.02),
@@ -49,9 +51,7 @@ class SupportPage extends StatelessWidget {
                             SettingsSupportItem(
                                 icon: Icon(TablerIcons.app_window, color: AppColors.primaryColor, size: Get.height * 0.04),
                                 title: 'Web sahifa'.tr,
-                                onTap: () {
-                                  launchUrl(Uri.parse(_getController.getSettings('ContactSite')));
-                                },
+                                onTap: () {launchUrl(Uri.parse(_getController.getSettings('ContactSite')));},
                                 color: Theme.of(context).colorScheme.onSurface,
                                 isNightMode: false,
                                 isLanguage: false,
@@ -63,9 +63,7 @@ class SupportPage extends StatelessWidget {
                             SettingsSupportItem(
                                 icon: Icon(TablerIcons.map_pin, color: AppColors.primaryColor, size: Get.height * 0.04),
                                 title: 'Manzil'.tr,
-                                onTap: () {
-                                  launchUrl(Uri.parse('https://www.google.com/maps/place/${_getController.getSettings('ContactAddress')}'));
-                                },
+                                onTap: () {launchUrl(Uri.parse('https://www.google.com/maps/place/${_getController.getSettings('ContactAddress')}'));},
                                 color: Theme.of(context).colorScheme.onSurface,
                                 isNightMode: false,
                                 isLanguage: false,
@@ -81,45 +79,19 @@ class SupportPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (_getController.getSettings('ContactTelegram') != '')
-                IconButton(
-                    onPressed: () {
-                      print(_getController.getSettings('ContactTelegram'));
-                      launchUrl(Uri.parse(_getController.getSettings('ContactTelegram')));
-                    },
-                    icon: Icon(
-                        TablerIcons.brand_telegram,
-                        color: AppColors.primaryColor,
-                        size: Get.height * 0.04)
-                ),
+                IconButton(onPressed: () {launchUrl(Uri.parse(_getController.getSettings('ContactTelegram')));}, icon: Icon(TablerIcons.brand_telegram, color: AppColors.primaryColor, size: Theme.of(context).buttonTheme.height)),
               if (_getController.getSettings('ContactTelegram') != '')
                 SizedBox(width: Get.width * 0.01),
               if (_getController.getSettings('ContactFacebook') != '')
-                IconButton(
-                    onPressed: () {
-                      launchUrl(Uri.parse(_getController.getSettings('ContactFacebook')));
-                    },
-                    icon: Icon(TablerIcons.brand_facebook,
-                        color: AppColors.primaryColor,
-                        size: Get.height * 0.04)
-                ),
+                IconButton(onPressed: () {launchUrl(Uri.parse(_getController.getSettings('ContactFacebook')));}, icon: Icon(TablerIcons.brand_facebook, color: AppColors.primaryColor, size: Theme.of(context).buttonTheme.height)),
               if (_getController.getSettings('ContactFacebook') != '')
                 SizedBox(width: Get.width * 0.01),
               if (_getController.getSettings('ContactInstagram') != '')
-                IconButton(
-                    onPressed: () {
-                      launchUrl(Uri.parse(_getController.getSettings('ContactInstagram')));
-                    },
-                    icon: Icon(TablerIcons.brand_instagram,
-                        color: AppColors.primaryColor,
-                        size: Get.height * 0.04)
-                ),
-            ],
+                IconButton(onPressed: () {launchUrl(Uri.parse(_getController.getSettings('ContactInstagram')));}, icon: Icon(TablerIcons.brand_instagram, color: AppColors.primaryColor, size: Theme.of(context).buttonTheme.height))
+            ]
           ),
           SizedBox(height: Get.height * 0.03),
-          Text(
-            'versiya'.tr,
-            style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.04),
-          ),
+          TextSmall(text: '${'Talqin'.tr} 1.0.0', color: Theme.of(context).colorScheme.onSurface),
           SizedBox(height: Get.height * 0.02),
         ],
       ))

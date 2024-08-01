@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/companents/sample/switch_port_items.dart';
 
 class PortItems16 extends StatelessWidget {
@@ -184,12 +185,7 @@ class PortItems16 extends StatelessWidget {
                             )
                         )
                     ),
-                    Expanded(
-                        flex: 1,
-                        child: SizedBox(
-                            width: Get.width * 0.06
-                        )
-                    ),
+                    Expanded(flex: 1, child: SizedBox(width: Get.width * 0.06)),
                     Expanded(
                         flex: 1,
                         child: SizedBox(
@@ -244,7 +240,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('1', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('1', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '1', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -259,7 +256,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('3', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('3', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '3', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -274,7 +272,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('5', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('5', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '5', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -289,7 +288,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('7', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('7', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '7', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -304,7 +304,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('9', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('9', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '9', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -319,7 +320,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('11', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('11', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '11', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -334,7 +336,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('13', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('13', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '13', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -349,7 +352,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('15', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('15', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '15', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )
@@ -371,7 +375,8 @@ class PortItems16 extends StatelessWidget {
                                     width: Get.width * 0.022,
                                     height: Get.height * 0.022,
                                     colorFilter: ColorFilter.mode(ports?[1] == 0 ? Colors.orange : ports?[1] == 1 ? Colors.green : ports?[1] == 2 ? Colors.yellow : Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
-                                Text('1', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                //Text('1', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Get.width * 0.03))
+                                TextSmall(text: '1', color: Theme.of(context).colorScheme.onSurface)
                               ]
                           )
                       )

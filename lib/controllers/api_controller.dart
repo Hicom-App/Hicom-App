@@ -69,7 +69,6 @@ class ApiController extends GetxController {
         _getController.setIsBack();
         if (jsonDecode(utf8.decode(Tea.decryptTea(response.body, _getController.getKey()).toString().codeUnits))['errcode'] == 0) {
           InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', '${_getController.code.value + _getController.phoneController.text} ${'raqamiga kod yuborildi'.tr}', false, 2);
-          //Get.to(VerifyPage());
           Get.to(VerifyPageNumber(phoneNumber: _getController.code.value + _getController.phoneController.text));
         } else {
           InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Xatolik yuz berdi', true, 3);
@@ -112,6 +111,7 @@ class ApiController extends GetxController {
 
   Future<void> login(phone, session, keys, enter) async {
     try {
+      debugPrint('phone: $phone, session: $session, key: $keys');
       var json = Tea.encryptTea('{"phone": "$phone","session":"$session"}', keys);
       var response = await post(Uri.parse('${_baseUrl + _getController.getQueryString('login', 'null') + json.toString()}&key=$keys'), headers: headers);
       debugPrint(response.statusCode.toString());
@@ -439,6 +439,7 @@ class ApiController extends GetxController {
         else if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 0) {
           _getController.setIsBack();
           InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Yangi loyiha qo‘shildi'.tr, false, 1);
+          Get.back();
           _getController.clearControllers();
           getProjectsHide();
         }
