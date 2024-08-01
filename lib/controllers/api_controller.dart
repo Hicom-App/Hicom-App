@@ -403,6 +403,7 @@ class ApiController extends GetxController {
       debugPrint(response.statusCode.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 0) {
+          Get.back();
           getProjects();
         } else {
           InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Sizda bunday huquq mavjud emas!'.tr, true, 3);
@@ -441,8 +442,8 @@ class ApiController extends GetxController {
         }
         else if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 0) {
           _getController.setIsBack();
-          InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Yangi loyiha qo‘shildi'.tr, false, 1);
           Get.back();
+          InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Yangi loyiha qo‘shildi'.tr, false, 1);
           _getController.clearControllers();
           getProjectsHide();
         }
@@ -484,6 +485,7 @@ class ApiController extends GetxController {
         } else if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 0) {
           _getController.setIsBack();
           _getController.clearControllers();
+          Get.back();
           InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Yangi qurilma qo‘shildi'.tr, false, 2);
           getSwitchList(pidId);
         }
