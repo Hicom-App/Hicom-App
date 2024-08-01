@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
               Container(
                   width: Get.width,
                   margin: EdgeInsets.only(top: Get.height * 0.01, left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.03),
-                  child: TextSmall(text: 'Biz Tasdiqlash kodini jo‘natamiz', color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),fontWeight: FontWeight.w500)
+                  child: TextSmall(text: 'Biz Tasdiqlash kodini jo‘natamiz', color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),fontWeight: FontWeight.w500,maxLines: 3)
               ),
               Container(
                   width: Get.width,
