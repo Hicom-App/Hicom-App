@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hicom/companents/filds/text_large.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../controllers/get_controller.dart';
 
 class InstructionPage extends StatelessWidget {
-  InstructionPage({super.key});
-
-  late final WebViewController _controller;
-  final GetController _getController = Get.put(GetController());
+  const InstructionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    _controller = WebViewController()
+    final WebViewController controller;
+    controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
         NavigationDelegate(
@@ -40,7 +37,7 @@ class InstructionPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: WebViewWidget(controller: _controller)
+          child: WebViewWidget(controller: controller)
         )
       )
     );
