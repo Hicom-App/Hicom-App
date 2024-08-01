@@ -28,15 +28,15 @@ class SettingsSupportItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextLarge(text: title, color: color.withOpacity(0.5), fontWeight: FontWeight.w500),
-              TextSmall(text: subTitle, color: color,  fontWeight: FontWeight.w500)
+              TextLarge(text: title, color: color.withOpacity(0.6), fontWeight: FontWeight.w400),
+              TextSmall(text: subTitle, color: color,  fontWeight: FontWeight.w400)
             ]
           ),
           const Spacer(),
           if (isLanguage)
             TextLarge(text: Get.locale == const Locale('uz', 'UZ') ? 'O‘zbekcha' : Get.locale == const Locale('oz', 'OZ') ? 'Узбекча' : Get.locale == const Locale('ru', 'RU') ? 'Русский' : 'English', color: color.withOpacity(0.5), fontWeight: FontWeight.w500),
           if (!isNightMode)
-            IconButton(onPressed: () => onTap(), icon: Icon(Icons.chevron_right, size: Get.height * 0.035, color: color))
+            IconButton(onPressed: () => onTap(), icon: Icon(Icons.chevron_right, size:  Theme.of(context).iconTheme.fill, color: color))
           else
             CupertinoSwitch(
               value: Theme.of(context).brightness == Brightness.dark,

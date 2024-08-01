@@ -373,6 +373,9 @@ class ApiController extends GetxController {
         if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 20000) {
           Get.back();
           InstrumentComponents().showToast(Get.context!, 'Diqqat!', 'Ushbu foydalanuvchi allaqachon taklif qilgan.'.tr, false, 2);
+        } if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 29997) {
+          Get.back();
+          InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Serverga ulanishda xatolik yuz berdi.'.tr, false, 2);
         } else if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 1) {
           InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Ushbu foydalanuvchi tizimda mavjud emas!'.tr, true, 3);
         } else if (jsonDecode(Tea.decryptTea(response.body, _getController.getKey()).toString())['errcode'] == 0) {

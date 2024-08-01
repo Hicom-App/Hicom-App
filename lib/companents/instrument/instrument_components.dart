@@ -426,7 +426,7 @@ class InstrumentComponents {
                         Container(
                           padding: EdgeInsets.only(left: Get.width * 0.035, right: Get.width * 0.035),
                           width: Get.width,
-                          child: TextSmall(text: '${_getController.getLanguage() == 'oz_OZ'|| _getController.getLanguage() == 'uz_UZ'? '"$name" ' :''}${'nomli loyihani haqiqatdan ham o‘chirishni xohlaysizmi?'.tr} ${_getController.getLanguage() == 'ru_RU'|| _getController.getLanguage() == 'en_US'? '"$name"?' :''}\n${'Loyihani o‘chirilganda uning ichidagi qurilmalar ham o‘chiriladi'.tr}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,maxLines: 6)),
+                          child: TextSmall(text: '${_getController.getLanguage() == 'oz_OZ'|| _getController.getLanguage() == 'uz_UZ'? '"$name" ' :''}${'nomli loyihani haqiqatdan ham o‘chirishni xohlaysizmi?'.tr} ${_getController.getLanguage() == 'ru_RU'|| _getController.getLanguage() == 'en_US'? '"$name"?' :''}\n${'Loyihani o‘chirilganda uning ichidagi qurilmalar ham o‘chiriladi'.tr}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,maxLines: 10)),
                         SizedBox(height: Get.height * 0.04),
                         Padding(
                             padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
@@ -479,7 +479,7 @@ class InstrumentComponents {
                         Container(
                           padding: EdgeInsets.only(left: Get.width * 0.035, right: Get.width * 0.035),
                           width: Get.width,
-                          child: TextSmall(text: '${_getController.getLanguage() == 'oz_OZ'|| _getController.getLanguage() == 'uz_UZ'? '"$name" ' :''}${'nomli qurilmani haqiqatdan ham o‘chirishni xohlaysizmi?'.tr} ${_getController.getLanguage() == 'ru_RU'|| _getController.getLanguage() == 'en_US'? '"$name"?' :''}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,maxLines: 6)
+                          child: TextSmall(text: '${_getController.getLanguage() == 'oz_OZ'|| _getController.getLanguage() == 'uz_UZ'? '"$name" ' :''}${'nomli qurilmani haqiqatdan ham o‘chirishni xohlaysizmi?'.tr} ${_getController.getLanguage() == 'ru_RU'|| _getController.getLanguage() == 'en_US'? '"$name"?' :''}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,maxLines: 10)
                         ),
                         SizedBox(height: Get.height * 0.04),
                         Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
@@ -556,6 +556,7 @@ class InstrumentComponents {
                 TextSmall(text: 'dialoglar'.tr, color: Theme.of(context).colorScheme.onSurface,maxLines: 10),
                 Padding(padding: EdgeInsets.only(top: Get.height * 0.01), child: const Divider()),
                 SizedBox(
+                  width: Get.width,
                   child: TextButton(
                     style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -594,7 +595,7 @@ class InstrumentComponents {
   void logOutDialog(BuildContext context) => Get.dialog(
         AlertDialog(
           title: TextLarge(text: 'Tasdiqlash', color: Theme.of(context).colorScheme.error),
-          content: TextSmall(text: 'Hisobdan chiqishni xohlaysizmi?', color: Theme.of(context).colorScheme.onSurface),
+          content: TextSmall(text: 'Hisobdan chiqishni xohlaysizmi?', color: Theme.of(context).colorScheme.onSurface,maxLines: 3),
           actions: [
             TextButton(
                 onPressed: () => Get.back(),
@@ -619,7 +620,7 @@ class InstrumentComponents {
   void restartDialog(BuildContext context,String pidId, String sn) => Get.dialog(
       AlertDialog(
           title: TextLarge(text: 'Diqqat!', color: Theme.of(context).colorScheme.error),
-          content: TextSmall(text: 'Qurilmani o‘chirib yoqish'.tr, color: Theme.of(context).colorScheme.onSurface),
+          content: TextSmall(text: 'Qurilmani o‘chirib yoqish'.tr, color: Theme.of(context).colorScheme.onSurface,maxLines: 3),
           actions: [
             TextButton(onPressed: () => Get.back(), child: TextSmall(text: 'Bekor qilish', color: Theme.of(context).colorScheme.primary)),
             TextButton(onPressed: () => {Get.back(), ApiController().switchReboot(pidId.toString(), sn.toString())}, child: TextSmall(text: 'Ha', color: Theme.of(context).colorScheme.primary))
@@ -695,7 +696,7 @@ class InstrumentComponents {
   void rebootDialog(BuildContext context,projectId,serialNumber,index) => Get.dialog(
         AlertDialog(
           title: TextLarge(text: 'Diqqat!', color: Theme.of(context).colorScheme.error),
-          content: TextSmall(text: 'Siz rostdan ham ushbu portni o‘chirib yoqishni xohlaysizmi?', color: Theme.of(context).colorScheme.onSurface,maxLines: 3),
+          content: TextSmall(text: 'Siz rostdan ham ushbu portni o‘chirib yoqishni xohlaysizmi?', color: Theme.of(context).colorScheme.onSurface,maxLines: 4),
           actions: [
             TextButton(onPressed: () => Get.back(), child: TextSmall(text: 'Bekor qilish', color: Theme.of(context).colorScheme.primary)),
             TextButton(onPressed: () => {Get.back(), ApiController().portRestart(projectId!, serialNumber!, index!)}, child: TextSmall(text: 'Ha', color: Theme.of(context).colorScheme.primary))

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hicom/companents/filds/text_small.dart';
 import 'package:hicom/pages/auth/login_page.dart';
 import 'package:hicom/pages/sample/sample_page.dart';
 import '../controllers/get_controller.dart';
-import 'companents/filds/text_large.dart';
 
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
@@ -21,7 +21,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _getController.tapTimes(open,3);
-
     return Scaffold(
       body: Center(
         child: Column(
@@ -33,7 +32,7 @@ class SplashScreen extends StatelessWidget {
             Flexible(child: Container()),
             CircularProgressIndicator(color: Theme.of(context).colorScheme.primary),
             SizedBox(height: Get.height * 0.04),
-            TextLarge(text: '${'Talqin'.tr}: 1.0.0', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
+            TextSmall(text: '${'Talqin'.tr}: 1.0.0', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
             SizedBox(height: Get.height * 0.02),
           ]
         )

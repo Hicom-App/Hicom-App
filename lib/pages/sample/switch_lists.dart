@@ -209,7 +209,8 @@ class SwitchList extends StatelessWidget {
                                                           TextSmall(text: _getController.switchListModel.value.online![index].name.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
                                                           const Spacer(),
                                                           Icon(TablerIcons.circle_filled, color: AppColors.green, size: Get.width * 0.025),
-                                                          PopupMenuButton<String>(
+                                                          if (isAdmin)
+                                                            PopupMenuButton<String>(
                                                               icon: Icon(TablerIcons.dots, size: Theme.of(context).buttonTheme.height),
                                                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                                                               color: Theme.of(context).colorScheme.surface,
