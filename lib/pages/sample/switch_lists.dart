@@ -179,9 +179,9 @@ class SwitchList extends StatelessWidget {
                                                       TextSmall(text: '${'MAC'.tr} ${_getController.switchListModel.value.offline![index].mac}', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,fontSize: Get.textTheme.bodySmall!.fontSize),
                                                       const Spacer(),
                                                       TextSmall(text: _getController.maskString(_getController.switchListModel.value.offline![index].sn.toString()), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,fontSize: Get.textTheme.bodySmall!.fontSize)
-                                                    ],
+                                                    ]
                                                   )
-                                                ],
+                                                ]
                                               )
                                           )
                                       )
@@ -300,8 +300,7 @@ class SwitchList extends StatelessWidget {
                                 }
                             )
                         ]
-                    )
-                        : Column(children: [
+                    ) : Column(children: [
                       SizedBox(
                           height: Get.height* 0.9,
                           width: Get.width,
@@ -318,9 +317,8 @@ class SwitchList extends StatelessWidget {
                 _getController.nameProjectController.text = name;
                 Get.to(AddSwitchPage(), arguments: Get.arguments);
               },
-              child: Icon(Icons.add,color: AppColors.white,size: Theme.of(context).buttonTheme.height),
+              child: Icon(Icons.add,color: AppColors.white,size: Theme.of(context).buttonTheme.height)
             )
-
         )
     );
   }
