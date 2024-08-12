@@ -349,6 +349,8 @@ class InstrumentComponents {
         backgroundColor: Theme.of(context).colorScheme.surface,
         StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
+              _getController.nameProjectController.clear();
+              _getController.noteProjectController.clear();
               return Container(
                   height: Get.height * 0.45,
                   decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0))),
