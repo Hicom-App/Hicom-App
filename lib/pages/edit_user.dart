@@ -85,7 +85,7 @@ class EditUser extends StatelessWidget {
                                         focusedBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(10))
                                     )
                                 ),
-                                onSelect: (Country country) {;
+                                onSelect: (Country country) {
                                   _getController.dropDownItems[0] = 0;
                                   _getController.dropDownItems[1] = 0;
                                   _getController.dropDownItems[2] = 0;
@@ -93,11 +93,26 @@ class EditUser extends StatelessWidget {
                                   _getController.changeDropDownItemsTitle(0,country.name.toString());
                                   if (_getController.dropDownItemsTitle[0] == 'Uzbekistan' || _getController.dropDownItemsTitle[0] == 'Uzbekistan') {
                                     ApiController().getRegions(Tea.encryptTea('{"country_id": 1}', '50UvFayZ2w5u3O9B'),'regions');
+                                  } else {
+                                    _getController.dropDownItems[0] = 0;
+                                    _getController.dropDownItems[1] = 0;
+                                    _getController.dropDownItems[2] = 0;
+                                    _getController.dropDownItems[3] = 0;
+                                    _getController.clearDistrictsModel();
+                                    _getController.clearProvinceModel();
                                   }
                                   _getController.changeDropDownItemsTitle(0,country.name.toString());
                                 }
                             ),
-                          }),
+                            _getController.dropDownItems[0] = 0,
+                            _getController.dropDownItems[1] = 0,
+                            _getController.dropDownItems[2] = 0,
+                            _getController.dropDownItems[3] = 0,
+                            if (_getController.dropDownItemsTitle[0] == 'Uzbekistan' || _getController.dropDownItemsTitle[0] == 'Uzbekistan') {
+                              ApiController().getRegions(Tea.encryptTea('{"country_id": 1}', '50UvFayZ2w5u3O9B'),'regions')
+                            },
+                            Get.focusScope?.unfocus()
+                          })
                     ),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.provinceModel.value.regions != null && _getController.provinceModel.value.regions!.isNotEmpty)
                       Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:TextSmall(text: 'Viloyat', color: Theme.of(context).colorScheme.onSurface)),
@@ -108,7 +123,8 @@ class EditUser extends StatelessWidget {
                               title: _getController.provinceModel.value.regions![_getController.dropDownItems[0]].name.toString(),
                               onTap: () => {
                                 InstrumentComponents().bottomBuildLanguageDialog(context,'Viloyat'.tr,0),
-                                _getController.dropDownItems[1] = 0
+                                _getController.dropDownItems[1] = 0,
+                                Get.focusScope?.unfocus(),
                               })
                       ),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.districtsModel.value.districts != null && _getController.provinceModel.value.regions!.isNotEmpty)
@@ -116,14 +132,20 @@ class EditUser extends StatelessWidget {
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.districtsModel.value.districts != null && _getController.provinceModel.value.regions!.isNotEmpty)
                       Container(
                           margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.02,top: Get.height * 0.01),
-                          child: DropdownItem(title: _getController.districtsModel.value.districts![_getController.dropDownItems[1]].name.toString(), onTap: () => {InstrumentComponents().bottomBuildLanguageDialog(context,'Shaxar/Tuman'.tr,1)})
+                          child: DropdownItem(title: _getController.districtsModel.value.districts![_getController.dropDownItems[1]].name.toString(), onTap: () => {
+                            InstrumentComponents().bottomBuildLanguageDialog(context,'Shaxar/Tuman'.tr,1),
+                            Get.focusScope?.unfocus(),
+                          })
                       ),
                     Padding(padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03), child:TextSmall(text: 'Foydalanuvchi turi', color: Theme.of(context).colorScheme.onSurface)),
                     Container(
                       margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03,bottom: Get.height * 0.02,top: Get.height * 0.02),
                       child: DropdownItem(
                           title: _getController.dropDownItem[_getController.dropDownItems[2]].toString(),
-                          onTap: () => {InstrumentComponents().bottomBuildLanguageDialog(context,'Foydalanuvchi turi'.tr,2)}),
+                          onTap: () => {
+                            InstrumentComponents().bottomBuildLanguageDialog(context,'Foydalanuvchi turi'.tr,2),
+                            Get.focusScope?.unfocus(),
+                          })
                     ),
                     SizedBox(height: Get.height * 0.05),
                     Container(
