@@ -229,8 +229,8 @@ class InstrumentComponents {
                         ),
                         SizedBox(height: Get.height * 0.02),
                         TextFields(title: '${'Loyiha nomi'.tr}:', hintText: 'Kiriting'.tr, controller: _getController.nameProjectController, maxLengthCharacters: 40),
-                        SizedBox(height: Get.height * 0.02),
-                        TextFields(title: '${'Qo‘shimcha ma’lumot'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.noteProjectController, maxLengthCharacters: 128),
+                        //SizedBox(height: Get.height * 0.02),
+                        //TextFields(title: '${'Qo‘shimcha ma’lumot'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.noteProjectController, maxLengthCharacters: 128),
                         SizedBox(height: Get.height * 0.04),
                         Container(
                             width: Get.width,
@@ -279,8 +279,8 @@ class InstrumentComponents {
                         ),
                         SizedBox(height: Get.height * 0.02),
                         TextFields(title: '${'Qurilma nomi'.tr}:', hintText: 'Kiriting'.tr, controller: _getController.nameProjectController, maxLengthCharacters: 40),
-                        SizedBox(height: Get.height * 0.02),
-                        TextFields(title: '${'Qo‘shimcha ma’lumot'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.noteProjectController, maxLengthCharacters: 128),
+                        //SizedBox(height: Get.height * 0.02),
+                        //TextFields(title: '${'Qo‘shimcha ma’lumot'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.noteProjectController, maxLengthCharacters: 128),
                         SizedBox(height: Get.height * 0.04),
                         Container(
                             width: Get.width,

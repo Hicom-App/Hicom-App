@@ -59,6 +59,7 @@ class ApiController extends GetxController {
       InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Telefon raqamingizni kiriting', true, 3);
       return;
     }
+    debugPrint('{"phone": "${_getController.code.value + _getController.phoneController.text}","code":""}');
     InstrumentComponents().loadingDialogs(Get.context!);
     try{
       var json = Tea.encryptTea('{"phone": "${_getController.code.value + _getController.phoneController.text}","code":""}', _getController.getKey());
