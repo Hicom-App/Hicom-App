@@ -11,6 +11,7 @@ import '../../resource/colors.dart';
 import '../filds/text_large.dart';
 import '../filds/text_small.dart';
 import '../text_fild.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InstrumentComponents {
   final GetController _getController = Get.put(GetController());
@@ -505,15 +506,15 @@ class InstrumentComponents {
 
   bottomSheetAccountsDelete(BuildContext context) => Get.bottomSheet(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.horizontal(right: Radius.circular(10.0),left: Radius.circular(10.0))),
-      enableDrag: true,
-      isScrollControlled: true,
+      enableDrag: false,
+      isScrollControlled: false,
       backgroundColor: Theme.of(context).colorScheme.surface,
       StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return Container(
-                height: Get.height * 0.3,
+                //height: Get.height * 0.3,
                 decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0))),
-                width: double.infinity,
+                width: Get.width,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -535,11 +536,24 @@ class InstrumentComponents {
                           width: Get.width,
                           child: TextSmall(text: 'delete log', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,maxLines: 10)),
                       SizedBox(height: Get.height * 0.04),
-                      Padding(
+                      Container(
                           padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
                           child: Obx(() => _getController.countdownDuration.value.inSeconds == 0
                               ? ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                if(_getController.loginModel.value.user != null){
+                                  final Uri emailUri = Uri(
+                                    scheme: 'mailto',
+                                    path: 'torex.amaki@gmail.com',
+                                    query: 'subject=${Uri.encodeComponent('${_getController.loginModel.value.user?.phone} Request to Delete Account')}&body=${Uri.encodeComponent('Hello, I would like to delete my account. Please assist.')}',
+                                  );
+                                  if (await canLaunchUrl(emailUri)) {
+                                    await launchUrl(emailUri);
+                                  } else {
+                                    throw 'Could not launch $emailUri';
+                                  }
+                                }
+                              },
                               style: ElevatedButton.styleFrom(backgroundColor: AppColors.secondaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                               child:const Center(child: TextSmall(text: 'O‘chirishni tasdiqlang', color: AppColors.white, fontWeight: FontWeight.w400))
                           )

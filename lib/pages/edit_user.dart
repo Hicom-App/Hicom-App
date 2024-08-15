@@ -1,7 +1,5 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
 import 'package:hicom/companents/filds/text_large.dart';
 import 'package:hicom/companents/filds/text_small.dart';
@@ -220,7 +218,7 @@ class EditUser extends StatelessWidget {
                         margin: EdgeInsets.only(top: Get.height * 0.01),
                         child: ElevatedButton(
                             onPressed: () => {
-                              _getController.deleteTimer(),
+                              //_getController.deleteTimer(),
                               InstrumentComponents().bottomSheetAccountsDelete(context)
                             },
                             style: ElevatedButton.styleFrom(backgroundColor: AppColors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
