@@ -1,5 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
 import 'package:hicom/companents/filds/text_large.dart';
 import 'package:hicom/companents/filds/text_small.dart';
@@ -48,6 +50,51 @@ class EditUser extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    /*Card(
+                        margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        elevation: 5,
+                        color: Theme.of(context).colorScheme.surface,
+                        shadowColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                        surfaceTintColor: Colors.transparent,
+                        child: Padding(
+                            padding: EdgeInsets.all(Get.height * 0.02),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                      children: [
+                                        Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              if (_getController.loginModel.value.user != null)
+                                                TextLarge(text: _getController.loginModel.value.user!.name.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
+                                              SizedBox(height: Get.height * 0.01),
+                                              if (_getController.loginModel.value.user != null)
+                                                TextLarge(text: _getController.loginModel.value.user!.phone.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500)
+                                            ]
+                                        ),
+                                        const Spacer(),
+                                        SvgPicture.asset('assets/svg_assets/user.svg', width: Get.height * 0.08, height: Get.height * 0.08)
+                                      ]
+                                  ),
+                                  SizedBox(height: Get.height * 0.01),
+                                  const Divider(),
+                                  SizedBox(height: Get.height * 0.01),
+                                  SizedBox(
+                                      width: Get.width,
+                                      child: ElevatedButton(
+                                          onPressed: () => {
+                                            //ApiController().deleteUser()
+                                          },
+                                          style: ElevatedButton.styleFrom(backgroundColor: AppColors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                          child: const TextSmall(text: 'Hisobni o‘chirish', color: AppColors.white, fontWeight: FontWeight.w500)
+                                      )
+                                  )
+                                ])
+                        )
+                    ),*/
+                    //delete accaunt button
                     SizedBox(height: Get.height * 0.05),
                     TextFields(title: '${'Ism-familiyangizni kiriting'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.nameController, maxLengthCharacters: 40),
                     SizedBox(height: Get.height * 0.02),
@@ -124,7 +171,7 @@ class EditUser extends StatelessWidget {
                               onTap: () => {
                                 InstrumentComponents().bottomBuildLanguageDialog(context,'Viloyat'.tr,0),
                                 _getController.dropDownItems[1] = 0,
-                                Get.focusScope?.unfocus(),
+                                Get.focusScope?.unfocus()
                               })
                       ),
                     if (_getController.dropDownItemsTitle[0] == 'Uzbekistan'.tr && _getController.districtsModel.value.districts != null && _getController.provinceModel.value.regions!.isNotEmpty)
@@ -144,7 +191,7 @@ class EditUser extends StatelessWidget {
                           title: _getController.dropDownItem[_getController.dropDownItems[2]].toString(),
                           onTap: () => {
                             InstrumentComponents().bottomBuildLanguageDialog(context,'Foydalanuvchi turi'.tr,2),
-                            Get.focusScope?.unfocus(),
+                            Get.focusScope?.unfocus()
                           })
                     ),
                     SizedBox(height: Get.height * 0.05),
@@ -165,6 +212,19 @@ class EditUser extends StatelessWidget {
                             },
                             style: ElevatedButton.styleFrom(backgroundColor: AppColors.blue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                             child: const TextSmall(text: 'Saqlash', color: AppColors.white, fontWeight: FontWeight.w500)
+                        )
+                    ),
+                    Container(
+                        width: Get.width,
+                        padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
+                        margin: EdgeInsets.only(top: Get.height * 0.01),
+                        child: ElevatedButton(
+                            onPressed: () => {
+                              _getController.deleteTimer(),
+                              InstrumentComponents().bottomSheetAccountsDelete(context)
+                            },
+                            style: ElevatedButton.styleFrom(backgroundColor: AppColors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                            child: const TextSmall(text: 'Hisobni o‘chirish', color: AppColors.white, fontWeight: FontWeight.w500)
                         )
                     ),
                     SizedBox(height: Get.height * 0.01)

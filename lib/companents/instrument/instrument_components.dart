@@ -503,6 +503,59 @@ class InstrumentComponents {
         )
     );
 
+  bottomSheetAccountsDelete(BuildContext context) => Get.bottomSheet(
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.horizontal(right: Radius.circular(10.0),left: Radius.circular(10.0))),
+      enableDrag: true,
+      isScrollControlled: true,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Container(
+                height: Get.height * 0.3,
+                decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: const BorderRadius.vertical(top: Radius.circular(10.0))),
+                width: double.infinity,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppBar(
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.horizontal(right: Radius.circular(10.0),left: Radius.circular(10.0))),
+                          title: TextLarge(text: 'Loyihani o’chirish', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
+                          centerTitle: false,
+                          backgroundColor: Theme.of(context).colorScheme.surface,
+                          elevation: 0,
+                          leadingWidth: 0,
+                          leading: Container(),
+                          actions: [
+                            IconButton(onPressed: () => Get.back(), icon: Icon(TablerIcons.x, color: Theme.of(context).colorScheme.onSurface, size: Theme.of(context).buttonTheme.height))
+                          ]
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Container(
+                          padding: EdgeInsets.only(left: Get.width * 0.035, right: Get.width * 0.035),
+                          width: Get.width,
+                          child: TextSmall(text: 'delete log', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400,maxLines: 10)),
+                      SizedBox(height: Get.height * 0.04),
+                      Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
+                          child: Obx(() => _getController.countdownDuration.value.inSeconds == 0
+                              ? ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(backgroundColor: AppColors.secondaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                              child:const Center(child: TextSmall(text: 'O‘chirishni tasdiqlang', color: AppColors.white, fontWeight: FontWeight.w400))
+                          )
+                              : ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(backgroundColor: AppColors.grey, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                              child: Center(child: TextSmall(text: '${'O‘chirishni tasdiqlang'.tr} (${(_getController.countdownDuration.value.inSeconds % 60).toString()})', color: AppColors.white, fontWeight: FontWeight.w400)))
+                          )
+                      )
+                    ]
+                )
+            );
+          }
+      )
+  );
+
   void infoPortDialog(BuildContext context) => Get.dialog(
         AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
