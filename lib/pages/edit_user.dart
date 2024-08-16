@@ -218,7 +218,7 @@ class EditUser extends StatelessWidget {
                         margin: EdgeInsets.only(top: Get.height * 0.01),
                         child: ElevatedButton(
                             onPressed: () => {
-                              //_getController.deleteTimer(),
+                              _getController.deleteTimer(),
                               InstrumentComponents().bottomSheetAccountsDelete(context)
                             },
                             style: ElevatedButton.styleFrom(backgroundColor: AppColors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),

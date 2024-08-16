@@ -544,7 +544,7 @@ class InstrumentComponents {
                                 if(_getController.loginModel.value.user != null){
                                   final Uri emailUri = Uri(
                                     scheme: 'mailto',
-                                    path: 'torex.amaki@gmail.com',
+                                    path: 'hicom.Uzbekistan@gmail.com',
                                     query: 'subject=${Uri.encodeComponent('${_getController.loginModel.value.user?.phone} Request to Delete Account')}&body=${Uri.encodeComponent('Hello, I would like to delete my account. Please assist.')}'
                                   );
                                   if (await canLaunchUrl(emailUri)) {
