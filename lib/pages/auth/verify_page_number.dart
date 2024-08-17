@@ -88,12 +88,10 @@ class VerifyPageNumber extends StatelessWidget {
               submittedPinTheme: submittedPinTheme,
               showCursor: false,
               pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-              //forceErrorState: _getController.errorField.value,
               forceErrorState: _getController.errorField.value,
               errorBuilder: (context, error) {
                 return TextSmall(text: error, color: AppColors.red, fontWeight: FontWeight.w500);
               },
-              //errorPinTheme: errorPinTheme,
               errorPinTheme: _getController.errorFieldOk.value ? successPinTheme : errorPinTheme,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly
@@ -104,9 +102,8 @@ class VerifyPageNumber extends StatelessWidget {
 
               onCompleted: (value) {
                 ApiController().checkCode();
-              },
-            ),),
-
+              }
+            )),
             Padding(padding: EdgeInsets.only(left: Get.width * 0.05, right: Get.width * 0.03,top: Get.height * 0.02),
                 child: Obx(() =>_getController.countdownDuration.value.inSeconds == 0
                     ? TextButton(

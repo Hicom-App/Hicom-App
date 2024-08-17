@@ -95,7 +95,7 @@ class ApiController extends GetxController {
           if (jsonDecode(utf8.decode(Tea.decryptTea(response.body, _getController.getKey()).toString().codeUnits))['registered'] == 0) {
             Get.to(RegisterPage());
           } else {
-            InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Kiritilgan kod tasdiqlandi'.tr, false, 2);
+            //InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Kiritilgan kod tasdiqlandi'.tr, false, 2);
             _getController.errorField.value = true;
             _getController.errorFieldOk.value = true;
             login(_getController.code.value + _getController.phoneController.text, jsonDecode(utf8.decode(Tea.decryptTea(response.body, _getController.getKey()).toString().codeUnits))['session'], key, true).then(
@@ -111,12 +111,12 @@ class ApiController extends GetxController {
         } else {
           _getController.errorField.value = true;
           _getController.tapTimes((){_getController.errorField.value = false;_getController.verifyCodeControllers.clear();}, 1);
-          InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Kiritilgan kod xato'.tr, true, 3);
+          //InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Kiritilgan kod xato'.tr, true, 3);
         }
       } else {
         _getController.errorField.value = true;
         _getController.tapTimes((){_getController.errorField.value = false;_getController.verifyCodeControllers.clear();}, 1);
-        InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Xatolik yuz berdi'.tr, true, 3);
+        //InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Xatolik yuz berdi'.tr, true, 3);
       }
     } catch (e) {
       _getController.errorField.value = true;
