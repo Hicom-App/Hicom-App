@@ -36,6 +36,8 @@ class GetController extends GetxController {
   RxBool whileApi = true.obs;
   RxBool onLoading = false.obs;
   RxBool onLoadingSwitch = false.obs;
+  RxBool errorField = false.obs;
+  RxBool errorFieldOk = false.obs;
 
   final qrKey = GlobalKey(debugLabel: 'QR');
   var result = Rxn<Barcode>();
@@ -237,7 +239,9 @@ class GetController extends GetxController {
 
   void getProject(ProjectModel projectModels){
     projectModel.value = projectModels;
-    searchProjectModel.value = projectModel.value;}
+    searchProjectModel.value = projectModel.value;
+    update();
+  }
 
   void getProvince(){
     if (loginModel.value.user != null && loginModel.value.user?.regionId != null) {
@@ -498,14 +502,10 @@ class GetController extends GetxController {
   final TextEditingController passwordProjectController = TextEditingController();
 
   //list 5 TextEditingController for switch
-  List<TextEditingController> verifyCodeControllers = List.generate(5, (index) => TextEditingController());
+  //List<TextEditingController> verifyCodeControllers = List.generate(5, (index) => TextEditingController());
 
-  //clear verifyCodeControllers
-  void clearVerifyCodeControllers() {
-    for (var i = 0; i < verifyCodeControllers.length; i++) {
-      verifyCodeControllers[i].clear();
-    }
-  }
+  final TextEditingController verifyCodeControllers = TextEditingController();
+
 
   void clearControllers() {
     nameController.clear();

@@ -85,8 +85,9 @@ class ApiController extends GetxController {
   }
 
   Future<void> checkCode() async {
+    debugPrint('{"phone": "${_getController.code.value + _getController.phoneController.text}","code":"${_getController.verifyCodeControllers.text}"}');
     try {
-      var json = Tea.encryptTea('{"phone": "${_getController.code.value + _getController.phoneController.text}","code":"${_getController.verifyCodeControllers[0].text+_getController.verifyCodeControllers[1].text+_getController.verifyCodeControllers[2].text+_getController.verifyCodeControllers[3].text+_getController.verifyCodeControllers[4].text}"}', _getController.getKey());
+      var json = Tea.encryptTea('{"phone": "${_getController.code.value + _getController.phoneController.text}","code":"${_getController.verifyCodeControllers.text}"}', _getController.getKey());
       var response = await post(Uri.parse('${_baseUrl + _getController.getQueryString('checkcode', 'null') + json.toString()}&key=${_getController.getKey()}'), headers: headers);
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (jsonDecode(utf8.decode(Tea.decryptTea(response.body, _getController.getKey()).toString().codeUnits))['errcode'] == 0) {
@@ -95,17 +96,31 @@ class ApiController extends GetxController {
             Get.to(RegisterPage());
           } else {
             InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Kiritilgan kod tasdiqlandi'.tr, false, 2);
-            _getController.clearVerifyCodeControllers();
-            login(_getController.code.value + _getController.phoneController.text, jsonDecode(utf8.decode(Tea.decryptTea(response.body, _getController.getKey()).toString().codeUnits))['session'], key, true);
+            _getController.errorField.value = true;
+            _getController.errorFieldOk.value = true;
+            login(_getController.code.value + _getController.phoneController.text, jsonDecode(utf8.decode(Tea.decryptTea(response.body, _getController.getKey()).toString().codeUnits))['session'], key, true).then(
+                    (value) {
+                      _getController.errorField.value = false;
+                      _getController.errorFieldOk.value = false;
+                      _getController.verifyCodeControllers.clear();
+                      //getProjectsHide();
+                      _getController.tapTimes((){getProjectsHide();}, 1);
+                    }
+            );
           }
         } else {
-          _getController.clearVerifyCodeControllers();
+          _getController.errorField.value = true;
+          _getController.tapTimes((){_getController.errorField.value = false;_getController.verifyCodeControllers.clear();}, 1);
           InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Kiritilgan kod xato'.tr, true, 3);
         }
       } else {
+        _getController.errorField.value = true;
+        _getController.tapTimes((){_getController.errorField.value = false;_getController.verifyCodeControllers.clear();}, 1);
         InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Xatolik yuz berdi'.tr, true, 3);
       }
     } catch (e) {
+      _getController.errorField.value = true;
+      _getController.tapTimes((){_getController.errorField.value = false;_getController.verifyCodeControllers.clear();}, 1);
       InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Ulanishni tekshiring'.tr, true, 3);
     }
   }
@@ -125,7 +140,8 @@ class ApiController extends GetxController {
           _getController.writeUser(_getController.loginModel.value);
           if (enter) {
             _getController.setRequest();
-            Get.offAll(SamplePage());
+            Get.offAll(SamplePage(login: true));
+            //Get.offAll(SamplePage());
           }
         } else {
           _getController.sec.value = 0;
@@ -239,6 +255,7 @@ class ApiController extends GetxController {
       try {
         InstrumentComponents().loadingDialogs(Get.context!);
         var response = await post(Uri.parse('${_baseUrl + _getController.getQueryString('prjmng', _getController.getUid()) + Tea.encryptTea('{}', _getController.getKey())}&key=${_getController.getKey()}'), headers: headers);
+        debugPrint(response.statusCode.toString());
         debugPrint(response.body.toString());
         debugPrint(Tea.decryptTea(response.body.toString(), _getController.getKey()).toString());
         if (response.statusCode == 200 || response.statusCode == 201) {
@@ -267,6 +284,7 @@ class ApiController extends GetxController {
       _getController.setRequest();
       try {
         var response = await post(Uri.parse('${_baseUrl + _getController.getQueryString('prjmng', _getController.getUid()) + Tea.encryptTea('{}', _getController.getKey())}&key=${_getController.getKey()}'), headers: headers);
+        debugPrint(response.statusCode.toString());
         debugPrint(response.body.toString());
         debugPrint(Tea.decryptTea(response.body.toString(), _getController.getKey()).toString());
         if (response.statusCode == 200 || response.statusCode == 201) {

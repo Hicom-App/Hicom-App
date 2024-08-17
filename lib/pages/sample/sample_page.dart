@@ -17,10 +17,13 @@ import '../../companents/search_fild.dart';
 import '../../controllers/get_controller.dart';
 
 class SamplePage extends StatelessWidget {
-  SamplePage({super.key});
+  final bool? login;
+  SamplePage({super.key, this.login});
 
   final GetController _getController = Get.put(GetController());
   final RefreshController _refreshController = RefreshController(initialRefresh: false);
+
+
 
   void _getData() {
     _refreshController.refreshCompleted();
@@ -30,9 +33,12 @@ class SamplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ApiController().login(_getController.getNumber(),_getController.getSession(),'50UvFayZ2w5u3O9B',false).then((_) => {
-      _refreshController.requestRefresh(),
-      _getData()
-      //_getController.tapTimes(() {_getData();}, 2)
+      if (login == null){
+        _refreshController.requestRefresh(),
+        _getData()
+      } else {
+        _refreshController.refreshCompleted()
+      }
     });
     return PopScope(
         canPop: false,
