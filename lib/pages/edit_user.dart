@@ -220,6 +220,7 @@ class EditUser extends StatelessWidget {
                             onPressed: () => {
                               _getController.deleteTimer(),
                               InstrumentComponents().bottomSheetAccountsDelete(context)
+                             // ApiController().deleteAccount()
                             },
                             style: ElevatedButton.styleFrom(backgroundColor: AppColors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                             child: const TextSmall(text: 'Hisobni o‘chirish', color: AppColors.white, fontWeight: FontWeight.w500)

@@ -166,6 +166,24 @@ class GetController extends GetxController {
     GetStorage().write('session', session);
   }
 
+  // get Map<String, String> data = {
+  // 'phone': phone,
+  // 'session': session,
+  // };
+  Map<String, String> getLogin() {
+    if (GetStorage().read('number') != null && GetStorage().read('session') != null) {
+      return {
+        'phone': GetStorage().read('number').toString(),
+        'session': GetStorage().read('session').toString(),
+      };
+    } else {
+      return {
+        'phone': '',
+        'session': '',
+      };
+    }
+  }
+
   String getNumber() {
     if (GetStorage().read('number') != null) {
       return GetStorage().read('number').toString();

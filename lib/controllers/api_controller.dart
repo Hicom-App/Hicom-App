@@ -212,8 +212,30 @@ class ApiController extends GetxController {
 
   Future<void> deleteUser() async {
     try {
+      print(jsonEncode(_getController.loginModel.value));
       var json = Tea.encryptTea(jsonEncode(_getController.loginModel.value), _getController.getKey());
       var response = await post(Uri.parse('${_baseUrl + _getController.getQueryString('logout', _getController.getUid()) + json.toString()}&key=${_getController.getKey()}'), headers: headers);
+      debugPrint(response.body);
+      debugPrint(response.statusCode.toString());
+      debugPrint(Tea.decryptTea(response.body, _getController.getKey()).toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        InstrumentComponents().showToast(Get.context!, 'Muvaffaqiyatli', 'Ushbu foydalanuvchi hisobi o‘chirildi.'.tr, true, 3);
+      } else {
+        InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Serverga ulanishda xatolik yuz berdi.'.tr, true, 3);
+      }
+    } catch(e) {
+      InstrumentComponents().showToast(Get.context!, 'Xatolik', 'Iltimos ulanishni tekshiring!'.tr, true, 3);
+    }
+  }
+
+
+  Future<void> deleteAccount() async {
+    try {
+      print(jsonEncode(_getController.getLogin()));
+      //var json = Tea.encryptTea(jsonEncode(_getController.loginModel.value), _getController.getKey());
+      var json = Tea.encryptTea(jsonEncode(_getController.getLogin()), _getController.getKey());
+      print('${_baseUrl}act=deleteaccount&uid=null&dt=$json&key=${_getController.getKey()}');
+      var response = await post(Uri.parse('${_baseUrl}act=deleteaccount&uid=null&dt=$json&key=${_getController.getKey()}'), headers: headers);
       debugPrint(response.body);
       debugPrint(response.statusCode.toString());
       debugPrint(Tea.decryptTea(response.body, _getController.getKey()).toString());
