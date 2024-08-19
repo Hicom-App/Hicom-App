@@ -520,7 +520,7 @@ class InstrumentComponents {
                     children: [
                       AppBar(
                           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.horizontal(right: Radius.circular(10.0),left: Radius.circular(10.0))),
-                          title: TextLarge(text: 'Loyihani o’chirish', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
+                          title: TextLarge(text: 'Hisobni o‘chirish', color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w400),
                           centerTitle: false,
                           backgroundColor: Theme.of(context).colorScheme.surface,
                           elevation: 0,

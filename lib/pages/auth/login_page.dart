@@ -46,30 +46,38 @@ class LoginPage extends StatelessWidget {
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1)),
                   child: Center(
                     child: IntlPhoneField(
-                        controller: _getController.phoneController,
-                        keyboardType: TextInputType.number,
-                        textInputAction: TextInputAction.done,
-                        flagsButtonPadding: EdgeInsets.only(left: Get.width * 0.01, right: Get.width * 0.01),
-                        onChanged: (phone) {},
-                        invalidNumberMessage: null,
-                        decoration: InputDecoration(
-                            hintText: 'Telefon raqam'.tr,
-                            hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
-                            border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(7)), borderSide: BorderSide.none),
-                            counterText: '',
-                            counter: null,
-                            semanticCounterText: null,
-                            error: null,
-                            errorText: null,
-                            isDense: true
-                        ),
-                        style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
-                        showCountryFlag: true,
-                        showCursor: true,
-                        showDropdownIcon: false,
-                        initialCountryCode: 'UZ',
-                        dropdownTextStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
-                        onCountryChanged: (phone) => _getController.code.value = '+${phone.fullCountryCode}'
+                      controller: _getController.phoneController,
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.done,
+                      flagsButtonPadding: EdgeInsets.only(left: Get.width * 0.01, right: Get.width * 0.01),
+                      onChanged: (phone) {
+                        if (phone.countryISOCode != 'uz') {
+                          _getController.countryCode.value = phone.countryISOCode;
+                        }
+                      },
+                      onCountryChanged: (phone) {
+                        _getController.code.value = '+${phone.fullCountryCode}';
+                        _getController.countryCode.value = phone.regionCode;
+                        _getController.phoneController.clear();
+                      },
+                      invalidNumberMessage: null,
+                      decoration: InputDecoration(
+                          hintText: 'Telefon raqam'.tr,
+                          hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5), fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
+                          border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(7)), borderSide: BorderSide.none),
+                          counterText: '',
+                          counter: null,
+                          semanticCounterText: null,
+                          error: null,
+                          errorText: null,
+                          isDense: true
+                      ),
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
+                      showCountryFlag: true,
+                      showCursor: true,
+                      showDropdownIcon: false,
+                      initialCountryCode: 'UZ',
+                      dropdownTextStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,),
                     )
                   )
               ),
