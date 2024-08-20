@@ -48,51 +48,6 @@ class EditUser extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*Card(
-                        margin: EdgeInsets.only(left: Get.width * 0.03, right: Get.width * 0.03),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        elevation: 5,
-                        color: Theme.of(context).colorScheme.surface,
-                        shadowColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
-                        surfaceTintColor: Colors.transparent,
-                        child: Padding(
-                            padding: EdgeInsets.all(Get.height * 0.02),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                      children: [
-                                        Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              if (_getController.loginModel.value.user != null)
-                                                TextLarge(text: _getController.loginModel.value.user!.name.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500),
-                                              SizedBox(height: Get.height * 0.01),
-                                              if (_getController.loginModel.value.user != null)
-                                                TextLarge(text: _getController.loginModel.value.user!.phone.toString(), color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w500)
-                                            ]
-                                        ),
-                                        const Spacer(),
-                                        SvgPicture.asset('assets/svg_assets/user.svg', width: Get.height * 0.08, height: Get.height * 0.08)
-                                      ]
-                                  ),
-                                  SizedBox(height: Get.height * 0.01),
-                                  const Divider(),
-                                  SizedBox(height: Get.height * 0.01),
-                                  SizedBox(
-                                      width: Get.width,
-                                      child: ElevatedButton(
-                                          onPressed: () => {
-                                            //ApiController().deleteUser()
-                                          },
-                                          style: ElevatedButton.styleFrom(backgroundColor: AppColors.red, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                                          child: const TextSmall(text: 'Hisobni o‘chirish', color: AppColors.white, fontWeight: FontWeight.w500)
-                                      )
-                                  )
-                                ])
-                        )
-                    ),*/
-                    //delete accaunt button
                     SizedBox(height: Get.height * 0.05),
                     TextFields(title: '${'Ism-familiyangizni kiriting'.tr}:',hintText: 'Kiriting'.tr, controller: _getController.nameController, maxLengthCharacters: 40),
                     SizedBox(height: Get.height * 0.02),
