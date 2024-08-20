@@ -11,7 +11,6 @@ import '../../resource/colors.dart';
 import '../filds/text_large.dart';
 import '../filds/text_small.dart';
 import '../text_fild.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class InstrumentComponents {
   final GetController _getController = Get.put(GetController());
@@ -541,18 +540,7 @@ class InstrumentComponents {
                           child: Obx(() => _getController.countdownDuration.value.inSeconds == 0
                               ? ElevatedButton(
                               onPressed: () async {
-                                if(_getController.loginModel.value.user != null){
-                                  final Uri emailUri = Uri(
-                                    scheme: 'mailto',
-                                    path: 'hicom.Uzbekistan@gmail.com',
-                                    query: 'subject=${Uri.encodeComponent('${_getController.loginModel.value.user?.phone} Request to Delete Account')}&body=${Uri.encodeComponent('Hello, I would like to delete my account. Please assist.')}'
-                                  );
-                                  if (await canLaunchUrl(emailUri)) {
-                                    await launchUrl(emailUri);
-                                  } else {
-                                    throw 'Could not launch $emailUri';
-                                  }
-                                }
+                                ApiController().deleteAccount();
                               },
                               style: ElevatedButton.styleFrom(backgroundColor: AppColors.secondaryColor, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                               child:const Center(child: TextSmall(text: 'O‘chirishni tasdiqlang', color: AppColors.white, fontWeight: FontWeight.w400))
